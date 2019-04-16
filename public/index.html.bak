@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <style>
+      .bg { 
+        /* The image used */
+        background-image: url("./img/bluebank.jpg");
+
+        /* Full height */
+        height: 100%; 
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      </style>
+  </head>
+  <body>
+    <script>
+  function calculaMensualidad()
+  {
+
+    const Http = new XMLHttpRequest();
+    const url='/apicalcula/?monto='+document.getElementById("monto").value+'&duracion='+document.getElementById("duracion").value+'&tasa='+document.getElementById("tasa").value;
+    Http.open("GET", url);
+    Http.send();
+    Http.onreadystatechange=(e)=>{
+                    var respuesta=Http.responseText.replace(/"{\\"montoPago\\":\\"/g,"");
+                    respuesta=respuesta.replace(/\\"}"/g,"");
+                    document.getElementById("mensualidad").value=respuesta;
+                  }
+  }
+
+  </script>
+    <div class="WordSection1">
+      <div align="center">
+        <table width="652" cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td><img src="./img/ibm.png" alt="IBM Cloud" style="width: 135px; height: 71px;">
+              </td>
+              <td style="width:233.75pt;padding:0in 5.4pt 0in 5.4pt" width="312"
+
+                valign="top">
+                <h1><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;color:white;
+  mso-themecolor:background1">Bienvenido a Blue Bank</span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><o:p></o:p></span></h1>
+              </td>
+            </tr>
+            <tr style="mso-yfti-irow:1;mso-yfti-lastrow:yes">
+              <td colspan="2" style="width:233.75pt;padding:0in 5.4pt 0in 5.4pt"
+
+                width="312" valign="top">
+                <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+  color:white;mso-themecolor:background1;mso-ansi-language:ES-MX" lang="ES-MX">En
+                    <span class="SpellE">está</span> sección de Blue Bank podrás
+                    calcular la mensualidad de tú crédito hipotecario para
+                    obtener la casa de <span class="SpellE">tús</span> sueños.</span><span
+
+                    style="font-size:10.0pt;mso-ansi-language:
+  ES-MX" lang="ES-MX"><o:p></o:p></span></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p class="MsoNormal"><span style="font-size:10.0pt;mso-ansi-language:
+ES-MX" lang="ES-MX"><o:p>&nbsp;</o:p></span></p>
+      </div>
+      <div align="center">
+        <table class="MsoNormalTable" style="width:489.0pt;border-collapse:collapse;mso-yfti-tbllook:1184;
+ mso-padding-alt:0in 5.4pt 0in 5.4pt;none repeat scroll 0% 0%" width="652" cellspacing="0"
+
+          cellpadding="0" border="0">
+          <tbody>
+            <tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes">
+              <td style="width:233.75pt;padding:0in 5.4pt 0in 5.4pt" width="312"
+
+                valign="top">
+                <p class="MsoNormal" style="text-align:right" align="right"><span
+
+                    style="color:white;mso-themecolor:background1">Monto:<o:p></o:p></span></p>
+              </td>
+              <td style="width:233.75pt;padding:0in 5.4pt 0in 5.4pt" width="312"
+
+                valign="top"><br>
+              </td>
+            </tr>
+            <tr style="mso-yfti-irow:1">
+              <td style="width:233.75pt;padding:0in 5.4pt 0in 5.4pt" width="312"
+
+                valign="top">
+                <p class="MsoNormal" style="text-align:right" align="right"><span
+
+                    class="SpellE"><span style="color:white;mso-themecolor:background1">Duración</span></span><span
+
+                    style="color:white;mso-themecolor:background1">: <o:p></o:p></span></p>
+              </td>
+              <td style="width:233.75pt;padding:0in 5.4pt 0in 5.4pt" width="312"
+
+                valign="top"><br>
+              </td>
+            </tr>
+            <tr style="mso-yfti-irow:2">
+              <td style="padding:0in 5.4pt 0in 5.4pt">
+                <p class="MsoNormal" style="text-align:right" align="right"><span
+
+                    class="SpellE"><span style="color:white;mso-themecolor:background1">Tasa</span></span><span
+
+                    style="color:white;mso-themecolor:background1">: <o:p></o:p></span></p>
+              </td>
+              <td style="padding:0in 5.4pt 0in 5.4pt"><br>
+              </td>
+            </tr>
+            <tr style="mso-yfti-irow:3;mso-yfti-lastrow:yes">
+              <td style="width:233.75pt;padding:0in 5.4pt 0in 5.4pt" width="312"
+
+                valign="top"> <input value="Calcular mensualidad" onclick="calculaMensualidad()"
+
+type="button"> </td>
+              <td style="width:233.75pt;padding:0in 5.4pt 0in 5.4pt" width="312"
+
+                valign="top">
+                <p class="MsoNormal" style="text-align:justify"><span style="font-size:10.0pt;
+  mso-fareast-font-family:&quot;Times New Roman&quot;"><input value="Mensualidad calculada"
+
+                      id="mensualidad" type="TEXT"><o:p></o:p></span></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><o:p>&nbsp;</o:p></span></p>
+    </div>
+  </body>
+</html>

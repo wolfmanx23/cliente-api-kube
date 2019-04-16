@@ -1,0 +1,23 @@
+{
+  "name": "rest-client",
+  "version": "1.0.0",
+  "description": "consume rest api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wolfman",
+  "license": "ISC",
+  "dependencies": {
+    "basic-auth-connect": "^1.0.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "http": "0.0.0",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0",
+    "vcap_services": "^0.6.0"
+  }
+}

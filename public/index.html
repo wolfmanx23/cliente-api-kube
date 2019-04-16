@@ -1,0 +1,110 @@
+<html>
+  <head>
+	  <style>
+			body, html {
+			  height: 100%;
+			  margin: 0;
+			}
+
+			.bg {
+			  /* The image used */
+			  background-image: url("img/bluebank.jpg");
+
+			  /* Full height */
+			  height: 100%; 
+
+			  /* Center and scale the image nicely */
+			  background-position: center;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+			}
+			</style>
+  </head>
+  <body  class="bg">
+    <script>
+		  function calculaMensualidad()
+		  {
+			if (esNumerico(document.getElementById("monto").value)&&esNumerico(document.getElementById("duracion").value)&&esNumerico(document.getElementById("tasa").value))
+				{
+						const Http = new XMLHttpRequest();
+						const url='/apicalcula/?monto='+document.getElementById("monto").value+'&duracion='+document.getElementById("duracion").value+'&tasa='+document.getElementById("tasa").value;
+						Http.open("GET", url);
+						Http.send();
+						Http.onreadystatechange=(e)=>{
+										var respuesta=Http.responseText.replace(/"{\\"montoPago\\":\\"/g,"");
+										respuesta=respuesta.replace(/\\"}"/g,"");
+										document.getElementById("mensualidad").value=respuesta;
+									  }
+				}
+			  else{ alert("Los únicos valores aceptados son numéricos, favor de revisar");}
+		  }
+			function esNumerico(n) 
+			{
+			  return !isNaN(parseFloat(n)) && isFinite(n);
+			}
+	 </script>
+	  
+      <div align="center">
+        <table width="652" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td style='vertical-align:middle'><img src="img/ibm.png" alt="IBM Cloud" width="80"> </td>
+              <td valign="center"><h1><strong><font color="white">Bienvenido a Blue Bank</font></strong></h1></td>
+            </tr>
+            <tr>
+              <td colspan="2" width="312">
+                <p><font color="white">En est&aacute; secci&oacute;n de Blue Bank podr&aacute;s
+                    calcular la mensualidad de t&uacute; cr&eacute;dito hipotecario para
+                    obtener la casa de t&uacute;s sue&ntilde;os.</font>
+				</p>
+              </td>
+            </tr>
+        </table>
+      </div>
+      <div>
+        <p></p>
+      </div>
+      <div align="center">
+        <table width="652" cellspacing="0"
+
+          cellpadding="0" border="0">
+            <tr>
+              <td>
+				  <p class="MsoNormal" style="text-align:right" align="right">
+				  <span style="color:white;mso-themecolor:background1">Monto:</span>
+				  </p>
+              </td>
+              <td >
+				  <p style="text-align:justify"><input value="1000000" id="monto" type="float"</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p align="right"><span style="color:white;mso-themecolor:background1">Duraci&oacute;n:</span></p>
+              </td>
+              <td >
+				  <p style="text-align:justify"><input value="180" id="duracion" type="float"</p>
+              </td>
+            </tr>
+            <tr style="mso-yfti-irow:2">
+              <td style="padding:0in 5.4pt 0in 5.4pt">
+                <p align="right"><span style="color:white;mso-themecolor:background1">Tasa:</span></p>
+              </td>
+              <td >
+				  <p style="text-align:justify"><input value="14" id="tasa" type="float"</p>
+              </td>
+			</tr>
+			
+			<tr><td> <br></tr>
+			<tr><td> <br></tr>
+            <tr style="mso-yfti-irow:3;mso-yfti-lastrow:yes">
+              <td> <p align="right"> <input value="Calcular mensualidad" onclick="calculaMensualidad()" type="button"></p> </td>
+              <td>
+                <p class="MsoNormal" style="text-align:justify"><input value="Mensualidad calculada" id="mensualidad" type="TEXT"><o:p></o:p></span></p>
+              </td>
+            </tr>
+        </table>
+      </div>
+      <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><o:p>&nbsp;</o:p></span></p>
+    </div>
+  </body>
+</html>
