@@ -1,0 +1,19 @@
+#
+# Deployment Declaration
+#
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: clienteapi
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name:  clienteapi
+    spec:
+      containers:
+      - name:  clienteapi
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
