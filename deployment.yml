@@ -21,7 +21,6 @@ metadata:
 
 spec:
   ports:
-  - nodePort: 32563
     port: 3000
     protocol: TCP
     targetPort: 3000
