@@ -57,16 +57,17 @@ app.get('/apicalcula', function(req, res) {
     var duracion= query.duracion;
     var tasa= query.tasa;
     var options = { method: 'GET',
-      url: 'https://api.us-south.apiconnect.appdomain.cloud/pedrombaorg-thinksummit/sb/apifinanciar/calcular',
+      url: 'https://api.us-south.apiconnect.appdomain.cloud/pedrombaorg-dev/sb/financiamiento/calcular',
       qs:
        { monto: monto,
          duracion: duracion,
          tasa: tasa },
       headers:
        { accept: 'application/json',
-         'x-ibm-client-id': 'd46a863e-4f3f-491d-800e-5c749713974e' } };
+         'x-ibm-client-id': '4f190b11-ebef-4f2f-a900-f9edc7a071ab' } };
     console.log('options: ', options);
     var request = require("request");
+//secret: wA6mV6sI7gL2vP3hM7lY2sS3kT8yE1dH6aU1jH0kW1oF0mK2jT
 
 
 
