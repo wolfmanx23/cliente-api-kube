@@ -11,3 +11,4 @@ spec:
     kind: Service
     name: clientepi
     weight: 100
+  wildcardPolicy: None
