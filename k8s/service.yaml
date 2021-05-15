@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: clienteapi
+  name: clienteapi
+spec:
+  type: NodePort
+  ports:
+    - name: 80-tcp
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: clienteapi
