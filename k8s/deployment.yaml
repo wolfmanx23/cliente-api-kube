@@ -13,4 +13,3 @@ spec:
       containers:
       - name: clienteapi
         image: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/clienteapi
-        imagePullPolicy: Always
