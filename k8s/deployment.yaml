@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: clienteapi
@@ -12,3 +12,7 @@ spec:
       containers:
       - name: clienteapi
         image: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/clienteapi
+        name: pipelines-vote-ui
+        ports:
+          - containerPort: 3000
+            protocol: TCP
