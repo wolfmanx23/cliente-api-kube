@@ -62,7 +62,7 @@ spec:
     taskRef:
       name: update-deployment
     params:
-    - name: DEPLOYMENT
+    - name: deployment
       value: $(params.deployment-name)
     - name: IMAGE
       value: $(params.IMAGE)
