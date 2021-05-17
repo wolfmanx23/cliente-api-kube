@@ -4,7 +4,7 @@ metadata:
   name: update-deployment
 spec:
   params:
-    - name: deployment
+    - name: DEPLOYMENT
       description: Nombre de la actualizacion del despliegue
       type: string
     - name: IMAGE
@@ -18,7 +18,7 @@ spec:
         - |-
           oc patch deployment $(inputs.params.deployment) --patch='{"spec":{"template":{"spec":{
             "containers":[{
-              "name": "$(inputs.params.deployment)",
+              "name": "$(inputs.params.DEPLOYMENT)",
               "image":"$(inputs.params.IMAGE)"
             }]
           }}}}'

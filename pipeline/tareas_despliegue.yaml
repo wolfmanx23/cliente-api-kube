@@ -7,7 +7,7 @@ spec:
   - name: source
   params:
     - name: manifest_dir
-      description: El directorio que contiene los yamlpara el despliegue
+      description: El directorio que contiene los yaml para el despliegue
       type: string
       default: "k8s"
   steps:
@@ -17,6 +17,6 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - |-
-          echo Applying manifests in $(inputs.params.manifest_dir) directory
+          echo Aplicado manifiestos en el directorio $(inputs.params.manifest_dir)
           oc apply -f $(inputs.params.manifest_dir)
           echo -----------------------------------

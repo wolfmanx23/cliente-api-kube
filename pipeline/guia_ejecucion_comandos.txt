@@ -1,7 +1,46 @@
+#ingresa al clúster vía CLI con el token del clúster
+#ANTES DE CONTINUAR INSTALA EL PIPELINE CONNECTOR
 #creación del proyecto
 oc new-project pipelines-tutorial
 #verificación de permisos
 oc get serviceaccount pipeline
+
+
 #despliega los siguientes yaml para indicar la ubicación de los yaml de despliegue y la secuencia de despliegue
+oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/tareas_despliegue.yaml
+oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/actualizacion_despliegue.yaml
+
+
 oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/01_apply_manifest_task.yaml
 oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/02_update_deployment_task.yaml
+
+
+#listado de las tareas desplegadas
+tkn task ls
+
+#creacion del pipeline
+oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/pipeline.yaml
+
+#ejecucion manual del pipelines
+tkn pipeline start build-and-deploy \
+    -w name=shared-workspace,volumeClaimTemplateFile=https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/03_persistent_volume_claim.yaml \
+    -p deployment-name=clienteapi \
+    -p git-url=https://github.com/wolfmanx23/cliente-api-kube.git \
+    -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/clienteapi
+
+#revision del progreso del pipelines
+tkn pipeline list
+tkn pipelinerun ls
+tkn pipeline logs -f
+#tomara algunos minutos para que se realice el tareas_despliegue
+
+#ahora crearemos el template del trigger
+oc create -f https://github.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/disparador-plantilla.yaml
+#ahora crearemos el binding del TriggerTemplate
+oc create -f https://github.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/disparador-binding.yaml
+#creacion del trigger
+oc create -f https://github.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/disparador.yaml
+#ahora habilitaremos la recepcion de eventos de github
+oc create -f https://github.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/eventlistener.yaml
+#ahora habilitaremos una URL para la recepcion de eventos de githubusercontent
+oc expose svc el-clienteapi-listener
