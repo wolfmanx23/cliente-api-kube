@@ -1,0 +1,7 @@
+#creación del proyecto
+oc new-project pipelines-tutorial
+#verificación de permisos
+oc get serviceaccount pipeline
+#despliega los siguientes yaml para indicar la ubicación de los yaml de despliegue y la secuencia de despliegue
+oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/01_apply_manifest_task.yaml
+oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/02_update_deployment_task.yaml

@@ -1,0 +1,8 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: clienteapi-listener
+spec:
+  serviceAccountName: pipeline
+  triggers:
+    - triggerRef: disparador-clienteapi

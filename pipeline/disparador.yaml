@@ -1,0 +1,10 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: disparador-clienteapi
+spec:
+  serviceAccountName: pipeline
+  bindings:
+    - ref: clienteapi
+  template:
+    ref: clienteapi
