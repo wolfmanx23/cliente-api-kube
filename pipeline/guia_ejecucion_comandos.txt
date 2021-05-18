@@ -4,6 +4,13 @@ oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/maste
 #instala el CLI de Tekton
 https://github.com/tektoncd/cli#installing-tkn
 
+#instala los pipelines de tekton en openshift
+oc new-project tekton-pipelines
+oc adm policy add-scc-to-user anyuid -z tekton-pipelines-controller
+oc adm policy add-scc-to-user anyuid -z tekton-pipelines-webhook
+oc apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.notags.yaml
+kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previous/v0.1.0/release.yaml
+
 #creación del proyecto
 oc new-project pipelines-tutorial
 #verificación de permisos
