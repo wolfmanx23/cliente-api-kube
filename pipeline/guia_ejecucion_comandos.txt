@@ -1,5 +1,9 @@
 #ingresa al clúster vía CLI con el token del clúster
 #ANTES DE CONTINUAR INSTALA EL PIPELINE CONNECTOR
+oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/sub.yaml
+#instala el CLI de Tekton
+https://github.com/tektoncd/cli#installing-tkn
+
 #creación del proyecto
 oc new-project pipelines-tutorial
 #verificación de permisos
@@ -30,12 +34,12 @@ tkn pipeline logs -f
 #tomara algunos minutos para que se realice el tareas_despliegue
 
 #ahora crearemos el template del trigger
-oc create -f https://github.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/disparador-plantilla.yaml
+oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/disparador-plantilla.yaml
 #ahora crearemos el binding del TriggerTemplate
-oc create -f https://github.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/disparador-binding.yaml
+oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/disparador-binding.yaml
 #creacion del trigger
-oc create -f https://github.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/disparador.yaml
+oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/disparador.yaml
 #ahora habilitaremos la recepcion de eventos de github
-oc create -f https://github.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/eventlistener.yaml
+oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/eventlistener.yaml
 #ahora habilitaremos una URL para la recepcion de eventos de githubusercontent
 oc expose svc el-clienteapi-listener
