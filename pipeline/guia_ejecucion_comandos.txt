@@ -53,7 +53,7 @@ oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/maste
 oc expose svc el-clienteapi-listener
 
 #Limpieza del ambiente
-oc delete deployment cliente-api-kube-deployment
+oc delete deployment cliente-api-kube
 oc delete service cliente-api-kube-service
 oc delete route cliente-api-kube-route
 
