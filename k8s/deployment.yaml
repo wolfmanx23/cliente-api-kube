@@ -8,14 +8,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: clienteapi
+      app: cliente-api-kube
   template:
     metadata:
       labels:
-        app: clienteapi
+        app: cliente-api-kube
     spec:
       containers:
-      - name: clienteapi
+      - name: cliente-api-kube
         image: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/cliente-api-kube
         ports:
           - containerPort: 3000
