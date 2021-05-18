@@ -18,7 +18,6 @@ spec:
         - |-
           oc patch deployment $(inputs.params.deployment) --patch='{"spec":{"template":{"spec":{
             "containers":[{
-              "name": "$(inputs.params.deployment)",
               "image":"$(inputs.params.IMAGE)"
             }]
           }}}}'

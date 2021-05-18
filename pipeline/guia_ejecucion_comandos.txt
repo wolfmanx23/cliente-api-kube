@@ -64,3 +64,4 @@ oc delete TriggerTemplate cliente-api-kube-template
 oc delete TriggerBinding cliente-api-kube-binding
 oc delete Trigger disparador-cliente-api-kube
 oc delete EventListener clienteapi-listener
+oc delete LimitRange limit-mem-cpu-per-container
