@@ -60,9 +60,12 @@ oc delete route cliente-api-kube-route
 oc delete pipeline build-and-deploy
 oc delete task update-deployment
 oc delete task apply-manifests
-oc delete Subscription openshift-pipelines-operator
+oc delete LimitRange limit-mem-cpu-per-container
+
 oc delete TriggerTemplate cliente-api-kube-template
 oc delete TriggerBinding cliente-api-kube-binding
 oc delete Trigger disparador-cliente-api-kube
 oc delete EventListener clienteapi-listener
-oc delete LimitRange limit-mem-cpu-per-container
+
+
+oc delete Subscription openshift-pipelines-operator
