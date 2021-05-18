@@ -37,8 +37,8 @@ name=shared-workspace,volumeClaimTemplateFile=https://raw.githubusercontent.com/
 
 #revision del progreso del pipelines
 tkn pipeline list
-tkn pipelinerun ls
-tkn pipeline logs -f
+#tkn pipelinerun ls
+#tkn pipeline logs -f
 #tomara algunos minutos para que se realice el tareas_despliegue
 
 #ahora crearemos el template del trigger
@@ -53,7 +53,7 @@ oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/maste
 oc expose svc el-clienteapi-listener
 
 #Limpieza del ambiente
-oc delete deployment cliente-api-kube
+oc delete deployment cliente-api-kube-deployment
 oc delete service cliente-api-kube-service
 oc delete route cliente-api-kube-route
 oc delete pipeline build-and-deploy
