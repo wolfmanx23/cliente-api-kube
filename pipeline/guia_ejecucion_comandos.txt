@@ -31,7 +31,7 @@ oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/maste
 #ejecucion manual del pipelines
 tkn pipeline start build-and-deploy -w \
 name=shared-workspace,volumeClaimTemplateFile=https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/pv.yaml \
--p deployment-name=cliente-api-kube \
+-p deployment-name=cliente-api-kube-deployment \
 -p git-url=https://github.com/wolfmanx23/cliente-api-kube.git \
 -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/cliente-api-kube
 
@@ -56,6 +56,7 @@ oc expose svc el-clienteapi-listener
 oc delete deployment cliente-api-kube-deployment
 oc delete service cliente-api-kube-service
 oc delete route cliente-api-kube-route
+
 oc delete pipeline build-and-deploy
 oc delete task update-deployment
 oc delete task apply-manifests
