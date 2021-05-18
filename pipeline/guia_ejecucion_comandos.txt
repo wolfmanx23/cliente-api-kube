@@ -2,16 +2,16 @@
 #ANTES DE CONTINUAR INSTALA EL PIPELINE CONNECTOR
 oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/sub.yaml
 #instala el CLI de Tekton
-https://github.com/tektoncd/cli#installing-tkn
+#https://github.com/tektoncd/cli#installing-tkn
 
 #instala los pipelines de tekton en openshift NO HACER caso a esta sección
-oc new-project tekton-pipelines
-oc adm policy add-scc-to-user anyuid -z tekton-pipelines-controller
-oc adm policy add-scc-to-user anyuid -z tekton-pipelines-webhook
-oc apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.notags.yaml
-kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previous/v0.1.0/release.yaml
-kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.24.1/release.yaml
-
+#oc new-project tekton-pipelines
+#oc adm policy add-scc-to-user anyuid -z tekton-pipelines-controller
+#oc adm policy add-scc-to-user anyuid -z tekton-pipelines-webhook
+#oc apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.notags.yaml
+#kubectl apply -f https://storage.googleapis.com/tekton-releases/triggers/previous/v0.1.0/release.yaml
+#kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.24.1/release.yaml
+#################################################################
 #creación del proyecto
 oc new-project pipelines-tutorial
 #verificación de permisos
@@ -31,9 +31,9 @@ oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/maste
 #ejecucion manual del pipelines
 tkn pipeline start build-and-deploy -w \
 name=shared-workspace,volumeClaimTemplateFile=https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/pv.yaml \
--p deployment-name=clienteapi \
+-p deployment-name=cliente-api-kube \
 -p git-url=https://github.com/wolfmanx23/cliente-api-kube.git \
--p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/clienteapi
+-p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/cliente-api-kube
 
 #revision del progreso del pipelines
 tkn pipeline list
@@ -51,3 +51,16 @@ oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/maste
 oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/eventlistener.yaml
 #ahora habilitaremos una URL para la recepcion de eventos de githubusercontent
 oc expose svc el-clienteapi-listener
+
+#Limpieza del ambiente
+oc delete deployment cliente-api-kube
+oc delete service cliente-api-kube-service
+oc delete route cliente-api-kube-route
+oc delete pipeline build-and-deploy
+oc delete task update-deployment
+oc delete task apply-manifests
+oc delete Subscription openshift-pipelines-operator
+oc delete TriggerTemplate cliente-api-kube-template
+oc delete TriggerBinding cliente-api-kube-binding
+oc delete Trigger disparador-cliente-api-kube
+oc delete EventListener clienteapi-listener

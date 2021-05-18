@@ -5,4 +5,4 @@ metadata:
 spec:
   serviceAccountName: pipeline
   triggers:
-    - triggerRef: disparador-clienteapi
+    - triggerRef: disparador-cliente-api-kube

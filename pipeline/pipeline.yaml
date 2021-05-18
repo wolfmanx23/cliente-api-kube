@@ -28,17 +28,17 @@ spec:
   params:
   - name: deployment-name
     type: string
-    description: name of the deployment to be patched
+    description: nombre del despliegue actualizado
   - name: git-url
     type: string
-    description: url of the git repo for the code of deployment
+    description: url git del despliegue
   - name: git-revision
     type: string
-    description: revision to be used from repo of the code for deployment
+    description: revision a ser usada del repositorio
     default: "master"
   - name: IMAGE
     type: string
-    description: image to be build from the code
+    description: imagen a construirse desde codigo
   tasks:
   - name: fetch-repository
     taskRef:

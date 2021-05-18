@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: clienteapi
-  name: clienteapi
+    app: cliente-api-kube
+  name: cliente-api-kube-deployment
 spec:
   replicas: 1
   selector:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: clienteapi
-        image: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/clienteapi
+        image: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/cliente-api-kube
         ports:
           - containerPort: 3000
             protocol: TCP

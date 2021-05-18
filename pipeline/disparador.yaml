@@ -1,10 +1,10 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: Trigger
 metadata:
-  name: disparador-clienteapi
+  name: disparador-cliente-api-kube
 spec:
   serviceAccountName: pipeline
   bindings:
-    - ref: clienteapi
+    - ref: cliente-api-kube-binding
   template:
-    name: clienteapi-template
+    name: cliente-api-kube-template
