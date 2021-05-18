@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: cliente-api-kube
-  name: cliente-api-kube-deployment
+  name: cliente-api-kube
 spec:
   replicas: 1
   selector:
