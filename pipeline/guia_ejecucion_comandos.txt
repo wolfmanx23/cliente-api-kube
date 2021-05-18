@@ -1,3 +1,4 @@
+#NOTAS: Durante el despliegue, el nombre del despliegue debe ser identico al del repositorio de github
 #ingresa al clúster vía CLI con el token del clúster
 #ANTES DE CONTINUAR INSTALA EL PIPELINE CONNECTOR
 oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/sub.yaml
