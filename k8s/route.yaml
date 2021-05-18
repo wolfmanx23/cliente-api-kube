@@ -3,12 +3,12 @@ kind: Route
 metadata:
   labels:
     app: cliente-api-kube
-  name: cliente-api-kube-route
+  name: clienteapi-route
 spec:
   port:
     targetPort: 80-tcp
   to:
     kind: Service
-    name: cliente-api-kube-service
+    name: cliente-api-kube
     weight: 100
   wildcardPolicy: None
