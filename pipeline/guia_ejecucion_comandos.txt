@@ -7,8 +7,8 @@ oc get serviceaccount pipeline
 
 
 #despliega los siguientes yaml para indicar la ubicación de los yaml de despliegue y la secuencia de despliegue
-oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/tareas_despliegue.yaml
-oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/blob/master/pipeline/actualizacion_despliegue.yaml
+oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/tareas_despliegue.yaml
+oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/actualizacion_despliegue.yaml
 
 #listado de las tareas desplegadas
 tkn task ls
@@ -18,7 +18,7 @@ oc create -f https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/maste
 
 #ejecucion manual del pipelines
 tkn pipeline start build-and-deploy -w \
-name=shared-workspace,volumeClaimTemplateFile=https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/03_persistent_volume_claim.yaml \
+name=shared-workspace,volumeClaimTemplateFile=https://raw.githubusercontent.com/wolfmanx23/cliente-api-kube/master/pipeline/pv.yaml \
 -p deployment-name=clienteapi \
 -p git-url=https://github.com/wolfmanx23/cliente-api-kube.git \
 -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/clienteapi
