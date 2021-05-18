@@ -3,12 +3,12 @@ kind: Route
 metadata:
   labels:
     app: clienteapi
-  name: clienteapi
+  name: clienteapi-route
 spec:
   port:
     targetPort: 80-tcp
   to:
     kind: Service
-    name: clientepi
+    name: clienteapi
     weight: 100
   wildcardPolicy: None
