@@ -17,6 +17,6 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - |-
-          echo Aplicado manifiestos en el directorio $(inputs.params.manifest_dir)
+          echo Aplicado manifiestos del directorio $(inputs.params.manifest_dir)
           oc apply -f $(inputs.params.manifest_dir)
           echo -----------------------------------
