@@ -17,5 +17,6 @@
     "http": "0.0.1-security",
     "querystring": "^0.2.1",
     "vcap_services": "^0.7.1"
+    "uuid":"8.3.2"
   }
 }
