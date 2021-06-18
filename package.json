@@ -9,7 +9,6 @@
   "author": "wolfman",
   "license": "ISC",
   "dependencies": {
-    "basic-auth-connect": "^1.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -17,7 +16,6 @@
     "express-validator": "^6.12.0",
     "http": "0.0.1-security",
     "querystring": "^0.2.1",
-    "request": "^2.88.2",
     "vcap_services": "^0.7.1"
   }
 }
