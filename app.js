@@ -57,7 +57,7 @@ app.get('/apicalcula', function(req, res) {
     var duracion= query.duracion;
     var tasa= query.tasa;
     var options = { method: 'GET',
-      url: 'https://api.us-south.apiconnect.appdomain.cloud/pedrombaorg-dev/sb/financiamiento/calcular',
+      url: 'https://949d4f86.us-south.apigw.appdomain.cloud/interescompuesto/interescompuesto?tasa='+tasa+'&monto='+monto+'&duracion='+duracion,
       qs:
        { monto: monto,
          duracion: duracion,
