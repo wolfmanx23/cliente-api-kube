@@ -27,12 +27,16 @@
 			if (esNumerico(document.getElementById("monto").value)&&esNumerico(document.getElementById("duracion").value)&&esNumerico(document.getElementById("tasa").value))
 				{
 						const Http = new XMLHttpRequest();
-						const url='/apicalcula/?monto='+document.getElementById("monto").value+'&duracion='+document.getElementById("duracion").value+'&tasa='+document.getElementById("tasa").value;
+						const url='https://949d4f86.us-south.apigw.appdomain.cloud/interescompuesto/interescompuesto?monto='+document.getElementById("monto").value+'&duracion='+document.getElementById("duracion").value+'&tasa='+document.getElementById("tasa").value;
 						Http.open("GET", url);
 						Http.send();
 						Http.onreadystatechange=(e)=>{
-										var respuesta=Http.responseText.replace(/"{\\"montoPago\\":\\"/g,"");
-										respuesta=respuesta.replace(/\\"}"/g,"");
+                    //var respuesta=Http.responseText;
+                    console.log(Http.responseText);
+                    //alert(Http.responseText);
+                    var respuesta=JSON.parse(Http.responseText).mensualidad;
+										//var respuesta=Http.responseText.replace(/"{\\"mensualidad\\":\\"/g,"");
+										//respuesta=respuesta.replace(/\\"}"/g,"");
 										document.getElementById("mensualidad").value=respuesta;
 									  }
 				}
@@ -80,15 +84,15 @@
 				  </p>
               </td>
               <td >
-				  <p style="text-align:justify"><input value="1000000" id="monto" type="float"</p>
+				  <p style="text-align:justify"><input value="3000000" id="monto" type="float"</p>
               </td>
             </tr>
             <tr>
               <td>
-                <p align="right"><span style="color:white;mso-themecolor:background1">Duraci&oacute;n:</span></p>
+                <p align="right"><span style="color:white;mso-themecolor:background1">Años de Duraci&oacute;n:</span></p>
               </td>
               <td >
-				  <p style="text-align:justify"><input value="180" id="duracion" type="float"</p>
+				  <p style="text-align:justify"><input value="15" id="duracion" type="float"</p>
               </td>
             </tr>
             <tr style="mso-yfti-irow:2">
@@ -96,7 +100,7 @@
                 <p align="right"><span style="color:white;mso-themecolor:background1">Tasa:</span></p>
               </td>
               <td >
-				  <p style="text-align:justify"><input value="14" id="tasa" type="float"</p>
+				  <p style="text-align:justify"><input value="6" id="tasa" type="float"</p>
               </td>
 			</tr>
 
